@@ -8,61 +8,19 @@
     <link rel="stylesheet" href="../static/assets/css/style.css">
 </head>
 <body>
-    <header class="header">
-        <a href="#home" class="logo">VELOCITY</a>
-        <i class='bx bx-menu' id="menu-icon"></i>
-        <nav class="navbar">
-            <a href="#home" class="active">Home</a>
-            <a href="#achievement">Provided Features</a>
-            <a href="#team">Team</a>
-        </nav>
-    </header>
-
-    <section class="home" id="home">
-        <div id="particles-js"></div>
-        <div class="home-content">
-            <h3>Welcome To</h3>
-            <h1>Our Website</h1>
-            <h3>Here we <span class="multiple-text"></span></h3>
-            <div class="home-img">
-                <img src="../static/assets/image/bc.png" alt="">
-            </div>
-        </div>
-    </section>
-
-    <section style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-        <div class="container" style="text-align: center; padding: 100px; background-color: black; border-radius: 10px;">
-            <h2 class="heading" style="color: white;">Get <span>Started</span></h2>
-            <h2 style="margin-bottom: 20px; color: white;">Choose a file and click upload</h2>
+    <section class="get-started">
+        <div class="container">
+            <h2 class="heading">Get <span>Started</span></h2>
+            <h2 class="sub-heading">Choose a file and click upload</h2>
             <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data">
-                <div class="form-group" style="margin-bottom: 20px;">
-                    <input type="file" class="form-control" name="file" id="file" required style="margin-top: 5px; padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 100%; max-width: 400px; margin: 0 auto;">
+                <div class="form-group">
+                    <input type="file" class="form-control" name="file" id="file" required>
                 </div>
-                <button type="submit" class="btn btn-primary" style="background-color: #007bff; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer; transition: background-color 0.3s;">
-                    Upload
-                </button>
+                <button type="submit" class="btn btn-primary">Upload</button>
             </form>
-            <div id="loading" style="margin-top: 20px; display: none; color: white;">Processing your video, please wait...</div>
-            <div id="videoContainer" style="margin-top: 20px;">
-                <a href="#" id="downloadLink" class="btn btn-success" style="background-color: #28a745; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer; transition: background-color 0.3s; display: none;">
-                    Download Processed Video
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="achievement" id="achievement">
-        <h2 class="heading">Provided<span> Features</span></h2>
-        <div class="slider-wrapper">
-            <div class="slider">
-                <img id="slide-1" src="../static/assets/image/estimation.png" alt="">
-                <img id="slide-2" src="../static/assets/image/category.png" alt="">
-                <img id="slide-3" src="../static/assets/image/counting.png" alt="">
-            </div>
-            <div class="slider-nav">
-                <a href="#slide-1"></a>
-                <a href="#slide-2"></a>
-                <a href="#slide-3"></a>
+            <div id="loading">Processing your video, please wait...</div>
+            <div id="videoContainer">
+                <a href="#" id="downloadLink" class="btn btn-success">Download Processed Video</a>
             </div>
         </div>
     </section>
@@ -112,7 +70,12 @@
                 }
             }).catch(error => {
                 console.error('Error:', error); // Debugging line to check for errors
+                document.getElementById('loading').style.display = 'none';
             });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('downloadLink').style.display = 'none';
         });
     </script>
 </body>
